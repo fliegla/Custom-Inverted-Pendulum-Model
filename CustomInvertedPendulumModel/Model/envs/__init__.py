@@ -1,1 +1,1 @@
-from customEnvironments.envs.diffdrive import DiffDriveEnv
+from Model.envs.inverted_pendulum import InvertedPendulumEnv
