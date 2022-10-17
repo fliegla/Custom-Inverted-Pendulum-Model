@@ -1,11 +1,11 @@
 import numpy as np
 
 from gym import utils
-from gym.envs.mujoco import MuJocoPyEnv
+from gym.envs.mujoco import MuJocoEnv
 from gym.spaces import Box
 
 
-class InvertedPendulumEnv(MuJocoPyEnv, utils.EzPickle):
+class InvertedPendulumEnv(MuJocoEnv, utils.EzPickle):
     metadata = {
         "render_modes": [
             "human",
@@ -18,7 +18,7 @@ class InvertedPendulumEnv(MuJocoPyEnv, utils.EzPickle):
     def __init__(self, **kwargs):
         utils.EzPickle.__init__(self, **kwargs)
         observation_space = Box(low=-np.inf, high=np.inf, shape=(4,), dtype=np.float64)
-        MuJocoPyEnv.__init__(
+        MuJocoEnv.__init__(
             self,
             "inverted_pendulum.xml",
             2,
@@ -52,5 +52,6 @@ class InvertedPendulumEnv(MuJocoPyEnv, utils.EzPickle):
 
     def viewer_setup(self):
         assert self.viewer is not None
-        self.viewer.cam.trackbodyid = 0
-        self.viewer.cam.distance = self.model.stat.extent
+        v = self.viewer
+        v.cam.trackbodyid = 0
+        v.cam.distance = self.model.stat.extent
