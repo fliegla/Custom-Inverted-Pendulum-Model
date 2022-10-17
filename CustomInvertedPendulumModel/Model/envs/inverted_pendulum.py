@@ -2,11 +2,11 @@ import gym
 import numpy as np
 
 from gym import utils
-from gym.envs.mujoco import MuJocoEnv
+from gym.envs.mujoco import MujocoEnv
 from gym.spaces import Box
 
 
-class InvertedPendulumEnv(MuJocoEnv, utils.EzPickle):
+class InvertedPendulumEnv(MujocoEnv, utils.EzPickle):
     metadata = {
         "render_modes": [
             "human",
@@ -19,7 +19,7 @@ class InvertedPendulumEnv(MuJocoEnv, utils.EzPickle):
     def __init__(self, **kwargs):
         utils.EzPickle.__init__(self, **kwargs)
         observation_space = Box(low=-np.inf, high=np.inf, shape=(4,), dtype=np.float64)
-        MuJocoEnv.__init__(
+        MujocoEnv.__init__(
             self,
             "/content/Custom-Inverted-Pendulum-Model/CustomInvertedPendulumModel/Model/envs/inverted_pendulum.xml",
             2,
