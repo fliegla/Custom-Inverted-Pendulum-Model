@@ -20,7 +20,7 @@ class InvertedPendulumEnv(MuJocoEnv, utils.EzPickle):
         observation_space = Box(low=-np.inf, high=np.inf, shape=(4,), dtype=np.float64)
         MuJocoEnv.__init__(
             self,
-            "inverted_pendulum.xml",
+            "/content/Custom-Inverted-Pendulum-Model/CustomInvertedPendulumModel/Model/envs/inverted_pendulum.xml",
             2,
             observation_space=observation_space,
             **kwargs
